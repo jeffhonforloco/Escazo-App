@@ -1,0 +1,35 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Search" class="action-bar">
+        <NavigationButton visibility="collapsed" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4">
+            <SearchBar hint="Where would you like to go?" class="search-bar" />
+            
+            <Label text="Popular Categories" class="text-lg font-bold mt-4 mb-2" />
+            <GridLayout rows="auto, auto" columns="*, *, *" class="features-grid">
+                <Button text="Flights" row="0" col="0" tap="{{ onFlightsTap }}" class="feature-button" />
+                <Button text="Hotels" row="0" col="1" tap="{{ onHotelsTap }}" class="feature-button" />
+                <Button text="Cars" row="0" col="2" tap="{{ onCarsTap }}" class="feature-button" />
+                <Button text="Rides" row="1" col="0" tap="{{ onRidesTap }}" class="feature-button" />
+                <Button text="Stays" row="1" col="1" tap="{{ onStaysTap }}" class="feature-button" />
+                <Button text="Explore" row="1" col="2" tap="{{ onExploreTap }}" class="feature-button" />
+            </GridLayout>
+
+            <Label text="Trending Destinations" class="text-lg font-bold mt-6 mb-2" />
+            <ListView items="{{ destinations }}" height="300">
+                <ListView.itemTemplate>
+                    <GridLayout columns="auto, *" class="p-2">
+                        <Image col="0" src="{{ image }}" width="100" height="100" class="rounded" />
+                        <StackLayout col="1" class="ml-2">
+                            <Label text="{{ name }}" class="font-bold" />
+                            <Label text="{{ description }}" class="text-gray-500" />
+                            <Label text="{{ price }}" class="text-purple-600" />
+                        </StackLayout>
+                    </GridLayout>
+                </ListView.itemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+</Page>

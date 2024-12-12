@@ -1,0 +1,31 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Profile" class="action-bar">
+        <NavigationButton visibility="collapsed" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4">
+            <StackLayout class="text-center p-4">
+                <Image src="{{ profileImage }}" width="100" height="100" class="rounded-full" />
+                <Label text="{{ fullName }}" class="text-xl font-bold mt-2" />
+                <Label text="{{ email }}" class="text-gray-500" />
+            </StackLayout>
+
+            <GridLayout rows="auto, auto, auto, auto" columns="50, *" class="mt-4">
+                <Label row="0" col="0" text="🎫" class="text-2xl" />
+                <Button row="0" col="1" text="My Bookings" tap="{{ onBookingsTap }}" class="-outline text-left" />
+                
+                <Label row="1" col="0" text="⭐" class="text-2xl" />
+                <Button row="1" col="1" text="Saved Places" tap="{{ onSavedPlacesTap }}" class="-outline text-left" />
+                
+                <Label row="2" col="0" text="⚙️" class="text-2xl" />
+                <Button row="2" col="1" text="Settings" tap="{{ onSettingsTap }}" class="-outline text-left" />
+                
+                <Label row="3" col="0" text="❓" class="text-2xl" />
+                <Button row="3" col="1" text="Help & Support" tap="{{ onSupportTap }}" class="-outline text-left" />
+            </GridLayout>
+
+            <Button text="Sign Out" tap="{{ onSignOutTap }}" class="-primary mt-8" />
+        </StackLayout>
+    </ScrollView>
+</Page>

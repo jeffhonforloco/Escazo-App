@@ -1,0 +1,10 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="bg-purple-600">
+    <GridLayout>
+        <StackLayout verticalAlignment="center" horizontalAlignment="center">
+            <Image src="~/assets/images/logo-white.png" width="150" height="150" class="mb-4" />
+            <Label text="Escazo" class="text-4xl text-white font-bold text-center mb-2" />
+            <Label text="Your Smart Travel Companion" class="text-xl text-white text-center" />
+            <ActivityIndicator busy="true" color="white" class="mt-8" />
+        </StackLayout>
+    </GridLayout>
+</Page>

@@ -1,0 +1,43 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="My Bookings" class="action-bar">
+        <NavigationButton text="Back" />
+    </ActionBar>
+
+    <TabView selectedTabTextColor="#6b46c1">
+        <TabView.items>
+            <TabViewItem title="Upcoming">
+                <TabViewItem.view>
+                    <ListView items="{{ upcomingBookings }}" class="list-group">
+                        <ListView.itemTemplate>
+                            <GridLayout columns="auto, *, auto" class="p-4 border-b">
+                                <Label col="0" text="{{ getBookingIcon(type) }}" class="text-2xl" />
+                                <StackLayout col="1" class="ml-2">
+                                    <Label text="{{ title }}" class="font-bold" />
+                                    <Label text="{{ date }}" class="text-gray-500" />
+                                </StackLayout>
+                                <Button col="2" text="View" tap="{{ onViewBooking }}" class="-outline" />
+                            </GridLayout>
+                        </ListView.itemTemplate>
+                    </ListView>
+                </TabViewItem.view>
+            </TabViewItem>
+
+            <TabViewItem title="Past">
+                <TabViewItem.view>
+                    <ListView items="{{ pastBookings }}" class="list-group">
+                        <ListView.itemTemplate>
+                            <GridLayout columns="auto, *, auto" class="p-4 border-b">
+                                <Label col="0" text="{{ getBookingIcon(type) }}" class="text-2xl text-gray-400" />
+                                <StackLayout col="1" class="ml-2">
+                                    <Label text="{{ title }}" class="font-bold" />
+                                    <Label text="{{ date }}" class="text-gray-500" />
+                                </StackLayout>
+                                <Button col="2" text="Review" tap="{{ onReviewBooking }}" class="-outline" />
+                            </GridLayout>
+                        </ListView.itemTemplate>
+                    </ListView>
+                </TabViewItem.view>
+            </TabViewItem>
+        </TabView.items>
+    </TabView>
+</Page>

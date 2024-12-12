@@ -1,0 +1,19 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Trip Itinerary" class="action-bar">
+        <NavigationButton text="Back" />
+    </ActionBar>
+
+    <GridLayout rows="auto, *">
+        <SegmentedBar row="0" items="{{ days }}" selectedIndex="{{ selectedDay }}" class="m-4" />
+        
+        <ListView row="1" items="{{ activities }}" class="list-group">
+            <ListView.itemTemplate>
+                <GridLayout columns="auto, *" rows="auto, auto" class="p-4 border-b">
+                    <Label col="0" rowSpan="2" text="{{ time }}" class="text-gray-500 mr-4" />
+                    <Label col="1" row="0" text="{{ title }}" class="font-bold" />
+                    <Label col="1" row="1" text="{{ description }}" class="text-gray-500" textWrap="true" />
+                </GridLayout>
+            </ListView.itemTemplate>
+        </ListView>
+    </GridLayout>
+</Page>

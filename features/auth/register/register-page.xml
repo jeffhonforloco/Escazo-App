@@ -1,0 +1,54 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Create Account" class="action-bar">
+        <NavigationButton text="Back" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4">
+            <Label text="Join Escazo" class="text-2xl font-bold text-center mb-1" />
+            <Label text="Create your account to start traveling" class="text-gray-500 text-center mb-8" />
+
+            <GridLayout rows="auto, auto" columns="*, *" class="mb-4">
+                <TextField 
+                    row="0" 
+                    col="0" 
+                    hint="First Name" 
+                    text="{{ firstName }}" 
+                    class="input mr-2" />
+                <TextField 
+                    row="0" 
+                    col="1" 
+                    hint="Last Name" 
+                    text="{{ lastName }}" 
+                    class="input ml-2" />
+            </GridLayout>
+
+            <TextField 
+                hint="Email" 
+                keyboardType="email" 
+                autocorrect="false" 
+                autocapitalizationType="none" 
+                text="{{ email }}" 
+                class="input mb-4" />
+
+            <TextField 
+                hint="Password" 
+                secure="true" 
+                text="{{ password }}" 
+                class="input mb-4" />
+
+            <TextField 
+                hint="Confirm Password" 
+                secure="true" 
+                text="{{ confirmPassword }}" 
+                class="input mb-6" />
+
+            <Button text="Create Account" tap="{{ onRegister }}" class="-primary mb-4" isEnabled="{{ !isLoading }}" />
+
+            <StackLayout class="text-center">
+                <Label text="Already have an account?" class="text-gray-500" />
+                <Button text="Sign In" tap="{{ onSignIn }}" class="-text" />
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>

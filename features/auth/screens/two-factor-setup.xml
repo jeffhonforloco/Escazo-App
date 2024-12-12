@@ -1,0 +1,43 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Set Up Two-Factor Auth" class="action-bar">
+        <NavigationButton text="Back" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-6">
+            <Label text="Enhance Your Security" class="text-2xl font-bold mb-2" />
+            <Label text="Set up two-factor authentication to protect your account" class="text-gray-500 mb-8" />
+
+            <StackLayout visibility="{{ step === 1 ? 'visible' : 'collapsed' }}">
+                <Image src="{{ qrCode }}" class="w-48 h-48 mx-auto mb-4" />
+                <Label text="1. Download an authenticator app" class="mb-2" />
+                <Label text="2. Scan the QR code above" class="mb-2" />
+                <Label text="3. Enter the 6-digit code below" class="mb-4" />
+                
+                <TextField 
+                    text="{{ verificationCode }}" 
+                    hint="Enter verification code" 
+                    keyboardType="number" 
+                    maxLength="6" 
+                    class="input text-center mb-4" 
+                />
+
+                <Button text="Verify Code" tap="{{ onVerifyCode }}" class="btn btn-primary mb-4" />
+            </StackLayout>
+
+            <StackLayout visibility="{{ step === 2 ? 'visible' : 'collapsed' }}">
+                <Label text="Backup Codes" class="text-xl font-bold mb-4" />
+                <Label text="Save these codes in a secure place. You can use them to access your account if you lose your authenticator device." class="mb-4" />
+                
+                <ListView items="{{ backupCodes }}" class="mb-4">
+                    <ListView.itemTemplate>
+                        <Label text="{{ $value }}" class="p-2 text-center font-mono" />
+                    </ListView.itemTemplate>
+                </ListView>
+
+                <Button text="Download Codes" tap="{{ onDownloadCodes }}" class="btn btn-outline mb-4" />
+                <Button text="Complete Setup" tap="{{ onCompleteSetup }}" class="btn btn-primary" />
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>

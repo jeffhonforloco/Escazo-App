@@ -1,0 +1,69 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Sign In" class="action-bar">
+        <NavigationButton text="Back" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-6">
+            <Label text="Welcome back" class="text-2xl font-bold mb-1" />
+            <Label text="Sign in to continue" class="text-gray-500 mb-8" />
+
+            <StackLayout class="form">
+                <Label text="Email or Phone Number" class="input-label" />
+                <TextField 
+                    text="{{ identifier }}"
+                    hint="Enter email or phone number"
+                    keyboardType="email"
+                    autocorrect="false"
+                    autocapitalizationType="none"
+                    class="input mb-4"
+                />
+
+                <Label text="Password" class="input-label" />
+                <TextField 
+                    text="{{ password }}"
+                    hint="Enter password"
+                    secure="true"
+                    class="input mb-2"
+                />
+
+                <Label 
+                    text="Forgot Password?" 
+                    tap="{{ onForgotPassword }}"
+                    class="text-purple-600 text-right mb-6"
+                />
+
+                <Button 
+                    text="Sign In" 
+                    tap="{{ onSignIn }}" 
+                    isEnabled="{{ !isLoading }}"
+                    class="btn btn-primary mb-4"
+                />
+
+                <Label text="Or continue with" class="text-center text-gray-500 mb-4" />
+
+                <GridLayout rows="auto" columns="*, *" class="mb-6">
+                    <Button 
+                        text="Google" 
+                        tap="{{ onGoogleSignIn }}" 
+                        class="btn btn-outline mx-2"
+                        col="0"
+                    />
+                    <Button 
+                        text="Apple" 
+                        tap="{{ onAppleSignIn }}" 
+                        class="btn btn-outline mx-2"
+                        col="1"
+                    />
+                </GridLayout>
+
+                <StackLayout orientation="horizontal" horizontalAlignment="center">
+                    <Label text="Don't have an account? " class="text-gray-500" />
+                    <Label text="Create Account" tap="{{ onCreateAccount }}" class="text-purple-600" />
+                </StackLayout>
+            </StackLayout>
+
+            <ActivityIndicator busy="{{ isLoading }}" class="m-4" />
+        </StackLayout>
+    </ScrollView>
+</Page>

@@ -1,0 +1,36 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Budget Tracker" class="action-bar">
+        <NavigationButton text="Back" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-6">
+            <GridLayout rows="auto" columns="*, *" class="mb-8">
+                <StackLayout col="0" class="text-center">
+                    <Label text="Total Budget" class="text-gray-500" />
+                    <Label text="{{ totalBudget | currency }}" class="text-2xl font-bold" />
+                </StackLayout>
+                <StackLayout col="1" class="text-center">
+                    <Label text="Remaining" class="text-gray-500" />
+                    <Label text="{{ remainingBudget | currency }}" class="text-2xl font-bold" />
+                </StackLayout>
+            </GridLayout>
+
+            <Label text="Expenses by Category" class="text-lg font-bold mb-4" />
+            <ListView items="{{ expenses }}" class="mb-8">
+                <ListView.itemTemplate>
+                    <GridLayout columns="auto, *, auto" class="p-4 border-b">
+                        <Label col="0" text="{{ icon }}" class="text-2xl mr-4" />
+                        <StackLayout col="1">
+                            <Label text="{{ category }}" class="font-medium" />
+                            <Label text="{{ date }}" class="text-sm text-gray-500" />
+                        </StackLayout>
+                        <Label col="2" text="{{ amount | currency }}" class="font-medium" />
+                    </GridLayout>
+                </ListView.itemTemplate>
+            </ListView>
+
+            <Button text="Add Expense" tap="{{ onAddExpense }}" class="btn btn-primary" />
+        </StackLayout>
+    </ScrollView>
+</Page>

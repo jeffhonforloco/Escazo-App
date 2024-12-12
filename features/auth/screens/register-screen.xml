@@ -1,0 +1,81 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Create Account" class="action-bar">
+        <NavigationButton text="Back" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-6">
+            <Label text="Join Escazo" class="text-2xl font-bold mb-1" />
+            <Label text="Create your account to start traveling" class="text-gray-500 mb-8" />
+
+            <StackLayout class="form">
+                <GridLayout rows="auto" columns="*, *" class="mb-4">
+                    <StackLayout col="0" class="mr-2">
+                        <Label text="First Name" class="input-label" />
+                        <TextField 
+                            text="{{ firstName }}"
+                            hint="Enter first name"
+                            class="input"
+                        />
+                    </StackLayout>
+                    <StackLayout col="1" class="ml-2">
+                        <Label text="Last Name" class="input-label" />
+                        <TextField 
+                            text="{{ lastName }}"
+                            hint="Enter last name"
+                            class="input"
+                        />
+                    </StackLayout>
+                </GridLayout>
+
+                <Label text="Email" class="input-label" />
+                <TextField 
+                    text="{{ email }}"
+                    hint="Enter email address"
+                    keyboardType="email"
+                    autocorrect="false"
+                    autocapitalizationType="none"
+                    class="input mb-4"
+                />
+
+                <Label text="Phone Number" class="input-label" />
+                <TextField 
+                    text="{{ phoneNumber }}"
+                    hint="Enter phone number"
+                    keyboardType="phone"
+                    class="input mb-4"
+                />
+
+                <Label text="Password" class="input-label" />
+                <TextField 
+                    text="{{ password }}"
+                    hint="Create password"
+                    secure="true"
+                    class="input mb-4"
+                />
+
+                <Label text="Confirm Password" class="input-label" />
+                <TextField 
+                    text="{{ confirmPassword }}"
+                    hint="Confirm password"
+                    secure="true"
+                    class="input mb-6"
+                />
+
+                <Button 
+                    text="Create Account" 
+                    tap="{{ onRegister }}" 
+                    isEnabled="{{ !isLoading }}"
+                    class="btn btn-primary mb-4"
+                />
+
+                <StackLayout orientation="horizontal" horizontalAlignment="center">
+                    <Label text="Already have an account? " class="text-gray-500" />
+                    <Label text="Sign In" tap="{{ onSignIn }}" class="text-purple-600" />
+                </StackLayout>
+            </StackLayout>
+
+            <ActivityIndicator busy="{{ isLoading }}" class="m-4" />
+        </StackLayout>
+    </ScrollView>
+</Page>

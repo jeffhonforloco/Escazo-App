@@ -1,0 +1,30 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Flight Search" class="action-bar">
+        <NavigationButton visibility="collapsed" />
+        <ActionItem ios.position="right" android.position="right" tap="onFilterTap">
+            <Label text="&#xf0b0;" class="fas" />
+        </ActionItem>
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4">
+            <GridLayout rows="auto, auto" columns="*, *" class="form">
+                <TextField hint="From" row="0" col="0" class="input" />
+                <TextField hint="To" row="0" col="1" class="input" />
+                <DatePicker row="1" col="0" class="input" />
+                <DatePicker row="1" col="1" class="input" />
+            </GridLayout>
+
+            <Button text="Search Flights" tap="{{ searchFlights }}" class="-primary" />
+
+            <ListView items="{{ searchResults }}" class="list-group">
+                <ListView.itemTemplate>
+                    <StackLayout class="list-group-item">
+                        <Label text="{{ airline }}" class="h2" />
+                        <Label text="{{ price }}" class="h3" />
+                    </StackLayout>
+                </ListView.itemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+</Page>

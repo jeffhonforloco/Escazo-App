@@ -1,0 +1,33 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd">
+    <GridLayout rows="auto, *" class="modal p-4">
+        <StackLayout row="0" class="header p-4">
+            <Label text="Share Your Trip" class="text-xl font-bold mb-2" />
+            <Label text="Choose how you want to share your adventure" class="text-gray-500" />
+        </StackLayout>
+
+        <ScrollView row="1">
+            <StackLayout class="p-4">
+                <Button text="Share via WhatsApp" tap="{{ onShareWhatsApp }}" class="btn btn-outline mb-4" />
+                <Button text="Share via Facebook" tap="{{ onShareFacebook }}" class="btn btn-outline mb-4" />
+                <Button text="Share via Twitter" tap="{{ onShareTwitter }}" class="btn btn-outline mb-4" />
+                
+                <Label text="Or invite friends directly" class="text-lg font-bold mt-4 mb-2" />
+                <GridLayout rows="auto" columns="*, auto" class="mb-4">
+                    <TextField col="0" text="{{ inviteEmail }}" hint="Enter email address" class="input" />
+                    <Button col="1" text="Add" tap="{{ onAddEmail }}" class="btn btn-primary ml-2" />
+                </GridLayout>
+                
+                <ListView items="{{ inviteEmails }}" class="mb-4">
+                    <ListView.itemTemplate>
+                        <GridLayout columns="*, auto" class="p-2">
+                            <Label col="0" text="{{ $value }}" />
+                            <Button col="1" text="✕" tap="{{ $parent.onRemoveEmail }}" class="btn btn-ghost" />
+                        </GridLayout>
+                    </ListView.itemTemplate>
+                </ListView>
+
+                <Button text="Send Invites" tap="{{ onSendInvites }}" class="btn btn-primary" isEnabled="{{ inviteEmails.length > 0 }}" />
+            </StackLayout>
+        </ScrollView>
+    </GridLayout>
+</Page>

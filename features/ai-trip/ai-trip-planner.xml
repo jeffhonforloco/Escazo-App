@@ -1,0 +1,61 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="AI Trip Planner" class="action-bar">
+        <NavigationButton text="Back" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-6">
+            <Label text="Let's Plan Your Perfect Trip" class="text-2xl font-bold mb-2" />
+            <Label text="Our AI will help you create a personalized itinerary" class="text-gray-500 mb-8" />
+
+            <StackLayout class="form">
+                <FormField>
+                    <Label text="Destination" class="input-label" />
+                    <TextField text="{{ destination }}" hint="Where do you want to go?" class="input" />
+                </FormField>
+
+                <FormField>
+                    <Label text="Travel Dates" class="input-label" />
+                    <GridLayout columns="*, *" class="gap-4">
+                        <DatePicker date="{{ startDate }}" class="input" col="0" />
+                        <DatePicker date="{{ endDate }}" class="input" col="1" />
+                    </GridLayout>
+                </FormField>
+
+                <FormField>
+                    <Label text="Budget" class="input-label" />
+                    <TextField 
+                        text="{{ budget }}" 
+                        hint="Your budget in USD" 
+                        keyboardType="number" 
+                        class="input" 
+                    />
+                </FormField>
+
+                <FormField>
+                    <Label text="Preferences" class="input-label" />
+                    <TextView 
+                        text="{{ preferences }}" 
+                        hint="Tell us about your interests (e.g., food, culture, adventure)" 
+                        class="input h-32" 
+                    />
+                </FormField>
+
+                <Button 
+                    text="Generate Trip Plan" 
+                    tap="{{ onGeneratePlan }}" 
+                    isEnabled="{{ !isLoading }}"
+                    class="btn btn-primary mt-4" 
+                />
+            </StackLayout>
+
+            <StackLayout visibility="{{ plan ? 'visible' : 'collapsed' }}" class="mt-8">
+                <Label text="Your Personalized Trip Plan" class="text-xl font-bold mb-4" />
+                <Label text="{{ plan }}" textWrap="true" class="text-gray-700" />
+                <Button text="Book This Trip" tap="{{ onBookTrip }}" class="btn btn-primary mt-4" />
+            </StackLayout>
+
+            <ActivityIndicator busy="{{ isLoading }}" class="m-4" />
+        </StackLayout>
+    </ScrollView>
+</Page>

@@ -1,0 +1,19 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <GridLayout class="bg-purple-600">
+        <StackLayout verticalAlignment="center" horizontalAlignment="center" class="p-8">
+            <Image src="~/assets/images/logo-white.png" width="120" height="120" class="mb-6" />
+            <Label text="Welcome to Escazo" class="text-3xl text-white font-bold text-center mb-2" />
+            <Label text="Plan your perfect trip with AI assistance" class="text-lg text-white text-center mb-8" />
+            
+            <Button text="Sign In" tap="{{ onSignIn }}" class="btn btn-primary-outline w-full mb-4" />
+            <Button text="Create Account" tap="{{ onCreateAccount }}" class="btn btn-white w-full mb-4" />
+            
+            <Label text="By continuing, you agree to our" class="text-white text-center" />
+            <FlexboxLayout justifyContent="center" class="mb-4">
+                <Label text="Terms of Service" tap="{{ onTerms }}" class="text-white text-center underline mx-1" />
+                <Label text="and" class="text-white text-center mx-1" />
+                <Label text="Privacy Policy" tap="{{ onPrivacy }}" class="text-white text-center underline mx-1" />
+            </FlexboxLayout>
+        </StackLayout>
+    </GridLayout>
+</Page>

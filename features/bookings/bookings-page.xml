@@ -1,0 +1,36 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="My Bookings" class="action-bar">
+        <NavigationButton visibility="collapsed" />
+    </ActionBar>
+
+    <TabView selectedTabTextColor="#6b46c1" tabTextFontSize="12">
+        <TabView.items>
+            <TabViewItem title="Upcoming">
+                <TabViewItem.view>
+                    <ListView items="{{ upcomingBookings }}" class="list-group">
+                        <ListView.itemTemplate>
+                            <GridLayout columns="auto, *" rows="auto, auto" class="p-4 border-b">
+                                <Label col="0" rowSpan="2" text="{{ getBookingIcon(type) }}" class="text-2xl text-purple-600" />
+                                <Label col="1" row="0" text="{{ title }}" class="font-bold" />
+                                <Label col="1" row="1" text="{{ date }}" class="text-gray-500" />
+                            </GridLayout>
+                        </ListView.itemTemplate>
+                    </ListView>
+                </TabViewItem.view>
+            </TabViewItem>
+            <TabViewItem title="Past">
+                <TabViewItem.view>
+                    <ListView items="{{ pastBookings }}" class="list-group">
+                        <ListView.itemTemplate>
+                            <GridLayout columns="auto, *" rows="auto, auto" class="p-4 border-b">
+                                <Label col="0" rowSpan="2" text="{{ getBookingIcon(type) }}" class="text-2xl text-gray-400" />
+                                <Label col="1" row="0" text="{{ title }}" class="font-bold" />
+                                <Label col="1" row="1" text="{{ date }}" class="text-gray-500" />
+                            </GridLayout>
+                        </ListView.itemTemplate>
+                    </ListView>
+                </TabViewItem.view>
+            </TabViewItem>
+        </TabView.items>
+    </TabView>
+</Page>
